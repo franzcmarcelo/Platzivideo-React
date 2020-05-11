@@ -6,39 +6,44 @@ module.exports = {
     entry: './source/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                }
+                },
             },
             {
                 test: /\.html$/,
-                use: [
-                    {
-                    loader: 'html-loader'
-                    }
-                ]
+                use: [{
+                    loader: 'html-loader',
+                }, ],
             },
             {
                 test: /\.(s*)css$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader
+                use: [{
+                        loader: MiniCssExtractPlugin.loader,
                     },
                     'css-loader',
-                    'sass-loader'
-                ]
-            }
-        ]
+                    'sass-loader',
+                ],
+            },
+            {
+                test: /\.(png|gif|jpg)$/,
+                use: [{
+                    'loader': 'file-loader',
+                    options: {
+                        name: 'assets/[hash].[ext]',
+                    },
+                }, ],
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -46,7 +51,7 @@ module.exports = {
             filename: './index.html',
         }),
         new MiniCssExtractPlugin({
-            filename: 'assets/[name].css'
+            filename: 'assets/[name].css',
         }),
     ],
 };
