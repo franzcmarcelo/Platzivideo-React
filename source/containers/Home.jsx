@@ -1,4 +1,7 @@
 import React from 'react';
+
+import '../assets/styles/App.scss';
+
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Carousel from '../components/Carousel';
@@ -8,15 +11,13 @@ import Footer from '../components/Footer';
 
 import useInitialState from '../hooks/useInitialState';
 
-import '../assets/styles/App.scss';
-
 const API = 'http://localhost:3000/initalState';
 
-const App = () => {
+const Home = () => {
   const initialState = useInitialState(API);
-  return initialState.length === 0 ? <h1> Loading... </h1> : (
-    <div className='App'>
-      <Header />
+
+  return initialState.length === 0 ? <h1> Loading API... </h1> : (
+    <>
       <Search />
 
       {/* Haremos la validacion para que, si MI lista esta vacia, no se muestre*/}
@@ -24,6 +25,9 @@ const App = () => {
         <Categories title='Mi lista'>
           <Carousel>
             {videos.trends.map((item) => {
+              // Pasamos un key solo para identificarlo
+              // y todos los elemntos que tenga mi item
+              // para usarlos en el Componente CarouselItem
               return <CarouselItem key={item.id} {...item} />;
             })}
           </Carousel>
@@ -31,7 +35,6 @@ const App = () => {
       )}
 
       {/* Mientras que para estas categorias, haremos que iteren c/u de los elementos */}
-
       <Categories title='Tendencias'>
         <Carousel>
           {initialState.trends.map((item) => {
@@ -39,6 +42,7 @@ const App = () => {
           })}
         </Carousel>
       </Categories>
+
       <Categories title='Originales de PlatziVideo'>
         <Carousel>
           {initialState.trends.map((item) => {
@@ -47,9 +51,8 @@ const App = () => {
         </Carousel>
       </Categories>
 
-      <Footer />
-    </div>
+    </>
   );
 };
 
-export default App;
+export default Home;
