@@ -17,9 +17,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    min-height: 700px;
+    // min-height: 700px;
     padding: 60px 68px 40px;
-    width: 300px;
+    // width: 300px;
 }
 
 .login__container--form {
@@ -34,14 +34,18 @@
 .login__container--remember-me {
     color: white;
     display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 0;
 }
 
 .login__container--remember-me a {
     color: white;
     font-size: 14px;
     text-decoration: none;
+    // align-self: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .login__container--remember-me a:hover {
@@ -62,6 +66,7 @@
 
 .login__container--register {
     font-size: 14px;
+    text-align: center;
 }
 
 .login__container--register a {
@@ -69,6 +74,7 @@
     font-weight: bold;
     font-size: 16px;
     text-decoration: none;
+    display: block;
 }
 
 .login__container--register a:hover {

@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 const Layout = ({ children }) =>(
   <div className='App'>
-    <Header />
+    {/* <Header /> */}
     {/* Permitira empujar el componente segun la ruta que accdemos*/}
     {children}
     <Footer />
